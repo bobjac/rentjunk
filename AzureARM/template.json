@@ -1,0 +1,164 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "databaseAccounts_p20teamstark_name": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "databaseAccounts_p20teamstark_name_1": {
+            "defaultValue": "p20teamstark",
+            "type": "String"
+        },
+        "components_p20teamstark_name": {
+            "defaultValue": "p20teamstark",
+            "type": "String"
+        },
+        "components_rentmyjunk_name": {
+            "defaultValue": "rentmyjunk",
+            "type": "String"
+        },
+        "storageAccounts_rentmyjunk_name": {
+            "defaultValue": "rentmyjunk",
+            "type": "String"
+        },
+        "serverfarms_p20teamstarkplan_name": {
+            "defaultValue": "p20teamstarkplan",
+            "type": "String"
+        },
+        "sites_rentmyjunk_name": {
+            "defaultValue": "rentmyjunk",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/Microsoft.DocumentDB/databaseAccounts/p20teamstark'.",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[parameters('databaseAccounts_p20teamstark_name_1')]",
+            "apiVersion": "2015-04-08",
+            "location": "Central US",
+            "tags": {},
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "name": "[parameters('databaseAccounts_p20teamstark_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/microsoft.insights/components/p20teamstark'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_p20teamstark_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "tags": {
+                "hidden-link:/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/Microsoft.Web/sites/p20teamstark": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_p20teamstark_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/microsoft.insights/components/rentmyjunk'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_rentmyjunk_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "tags": {
+                "hidden-link:/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/Microsoft.Web/sites/rentmyjunk": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_rentmyjunk_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/p20teamstark/providers/Microsoft.Storage/storageAccounts/rentmyjunk'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_rentmyjunk_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "centralus",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/Microsoft.Web/serverfarms/p20teamstarkplan'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "name": "[parameters('serverfarms_p20teamstarkplan_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "Central US",
+            "properties": {
+                "name": "[parameters('serverfarms_p20teamstarkplan_name')]",
+                "numberOfWorkers": 1
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourceGroups/P20TeamStark/providers/Microsoft.Web/sites/rentmyjunk'.",
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('sites_rentmyjunk_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "Central US",
+            "tags": {
+                "hidden-related:/subscriptions/ed2f73c5-c021-4b86-9afb-aa7998d16085/resourcegroups/P20TeamStark/providers/Microsoft.Web/serverfarms/p20teamstarkplan": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_rentmyjunk_name')]",
+                "hostNames": [
+                    "rentmyjunk.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "rentmyjunk.azurewebsites.net",
+                    "rentmyjunk.scm.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_rentmyjunk_name'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_rentmyjunk_name'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_p20teamstarkplan_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_p20teamstarkplan_name'))]"
+            ]
+        }
+    ]
+}
